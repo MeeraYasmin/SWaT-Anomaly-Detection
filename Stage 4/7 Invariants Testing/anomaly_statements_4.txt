@@ -1,0 +1,3 @@
+INV1: If P401=2, after a window of 174 samples, if LIT401<=800 then it is an anomaly.
+INV2: If P401=2, after a window of 5 samples, if FIT401<=0.101863 then it is an anomaly.
+INV3: If P401=1, after a window of 1 sample, if FIT401>=0.916768 then it is an anomaly.

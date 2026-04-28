@@ -1,0 +1,4 @@
+Plant stage,Alert Code,Antecedent,Consequent,Comments
+4,A2-01,P401=2,LIT401<=800,P401 RUN and no LIT401 > 800 implies anomaly
+4,A2-02,P401=2,FIT401<=0.101863,P401 RUN and no flow on FIT401 implies anomaly
+4,A2-03,P401=1,FIT401>=0.916768,P401 STOP and flow on FIT401 implies anomaly
