@@ -1,0 +1,61 @@
+You are an expert process engineer specializing in pipeline systems
+ and instrumentation for water treatment plants. Your task is to analyze
+ the provided HMI diagram and produce a directed component flow graph based strictly on the rules below.
+
+Component Descriptions:
+
+FIT (Flow Indicator Transmitter): An inline flow meter that measures the volume of water passing through
+ a pipe. Water flows into the FIT from the upstream component and continues forward to the next component
+ downstream.
+MV (Motorized Valve): A motor-operated valve that controls whether water is allowed to pass through.
+ Water arriving at the valve continues forward to the next downstream component when the valve is open.
+LIT (Level Indicator Transmitter): A level sensor physically mounted on a tank that monitors the water
+ level inside it. Since the tank itself is not a tracked component, the LIT acts as a proxy for the tank. Any water entering the tank is considered to arrive at the LIT node, and any water leaving the tank is considered to originate from the LIT node.
+P (Pump): A pump that draws water from the tank (represented by the LIT mounted on it) and pushes
+ it forward through the system toward the next downstream component.
+PI (Pressure Indicator): A pressure gauge mounted on the pipeline that monitors pressure
+ at a specific point. It is a local indicator only and is not part of the process flow path — water does
+ not flow through it.
+T (Tank): A storage vessel that holds water at a stage in the process. Since the tank is represented
+ by the LIT sensor mounted on it, the tank itself is not included as a separate node in the graph.
+DPIT (Differential Pressure Indicator Transmitter): A sensor that continuously measures the pressure difference between the inlet and outlet of the UF membrane filter. Water flows into the DPIT from the upstream component and continues forward to the next downstream component.
+AIT (Analyser Indicator Transmitter): An inline water quality sensor that measures a specific chemical property of the water such as pH, ORP, or conductivity. It is a local indicator only and is not part of the process flow path — water does not flow through it.
+FI (Flow Indicator / Rotameter): A local visual flow indicator that shows the flow rate on-site only. It has no electrical output and does not transmit data to the control system — it is a local indicator only and is not part of the process flow path. Water does not flow through it.
+PSH (Pressure Switch High): A binary pressure switch that triggers a high-pressure alarm and shuts down the UF feed pump when inlet pressure exceeds its set-point. It is a local protective device only and is not part of the process flow path — water does not flow through it.
+DPSH (Differential Pressure Switch High): A binary switch that triggers an alarm when the pressure difference across the UF membrane exceeds its set-point. It is a local protective device only and is not part of the process flow path — water does not flow through it.
+UF (Ultrafiltration Membrane): A membrane filter vessel that removes solids and particles from the feed water. Water flows into the UF membrane from the upstream component and the filtered permeate continues forward to the next downstream component.
+
+
+Step 1- Filter against the column names whitelist.
+Cross-check every identified component tag against the provided column_names.csv.
+ Remove any component that does not appear in the whitelist.
+ Components such as PI-301, PI-302, PI-303, PI-304, PI-305, T-301, DPSH-301, FI-301, PSH-301 and UF-301 are examples of components that must be excluded
+ if they are absent from the whitelist. Do not include them in the graph under any circumstances,
+ even if they are clearly visible on the HMI diagram.
+
+Step 2- Construct the directed graph.
+Using only the whitelisted components remaining after Step 2, trace how water physically moves
+ through the system based on the HMI diagram and the component descriptions above.
+ Draw a connection from one component to the next based on the direction water flows between them.
+
+Special Rules:
+ Keep in mind that since the tank (T) is excluded, the LIT mounted on that tank takes its place
+— so any component that was connected to the tank in the HMI is instead connected to the LIT node
+ in the graph.
+
+MV-301, MV-303 and MV-304 are used for backwashing process (which is connected to stage 6) and so even though it's present in the dataset, remove it from the directed graph and stage_3_components.csv.
+
+From FIT-301, water flows through both DPIT-301, UF-301 (but DPIT-301 and UF-301 need not be shown on the graph but DPIT column can be kept on stage_3_components.csv even though it's not on the graph and connections_3.csv) and water flows through these 2 paths goes to MV-302 directly and then it passes through AITs (AIT-301, AIT-302, AIT-303 as they are mentioned on the dotted lines after MV-302 but they are just chemical sensors and not part of the flow path and so, need not be shown in the graph).
+
+First, show the filtered list identified in Step 1.
+ Then, render the directed graph diagram using the filtered components from Step 1,
+  with each node labeled exactly as it appears in the column names list.
+
+Step 3- Dataset filtering
+After the graph generation, extract the column names which are kept as node on the graph and from the preprocessed_dataset.csv, extract those column names alone (for eg, FIT-301, MV-301, …) and save this as stage_3_components.csv.
+
+Step 4- Pumps checking
+from the stage_3_components.csv, extract the pump columns and check the number of unique values in each pump column. If the number of unique values is less than 2, then remove the pump from the stage_3_components.csv and also from the graph.
+
+Step 5- Raw edges connections
+Save the raw edges from generate_stage3_graph.py as connections_3.csv as (source, destination) format.
