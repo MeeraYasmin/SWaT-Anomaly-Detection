@@ -1,0 +1,21 @@
+Templates:
+
+You are an expert process engineer specializing in pipeline systems
+ and instrumentation for water treatment plants. Your task is to analyze the directed graph.
+
+Based on the components types available at the directed graph and based on the component description (such as P, LIT, FIT),
+make a second order connection in such a way the component is connected to every other components and it's own similar component.
+
+P is the actuator.
+FIT and LIT are sensors.
+
+Rule:
+Same sensors and different sensors cannot be connected to each other (for eg., FIT and FIT are not connected, FIT and LIT are not connected).
+Same actuators and different actuators cannot be connected to each other (for eg., MV and MV are not connected, MV and P are not connected).
+An actuator and sensor can be connected to each other
+
+Exception:
+LIT cannot be connected to MV 
+P cannot be connected to LIT
+
+Generate this second order connection based on the above rule and show the connection table as templates_6_2.csv
