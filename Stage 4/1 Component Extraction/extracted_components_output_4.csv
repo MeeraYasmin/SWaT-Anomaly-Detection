@@ -1,0 +1,15 @@
+Tag,Full_Name,Component_Type,Description
+LIT-401,RO Feed Water Level Meter,Level Indicator Transmitter,Monitors water level in RO Feed Water Tank T-401 (reading: 979 mm)
+T-401,RO Feed Water Tank,Tank,Storage for water to be processed by RO
+P-401,RO Feed Pump 1,Pump,Feeds water to the RO system
+P-402,RO Feed Pump 2,Pump,Standby/Secondary RO feed pump
+PI-401,RO Feed Pressure 1,Pressure Indicator,Measures pressure after P-401
+PI-402,RO Feed Pressure 2,Pressure Indicator,Measures pressure after P-402
+FIT-401,RO Feed Flow Meter,Flow Indicator Transmitter,Measures flow rate to the RO system (reading: 1.21 m³/h)
+AIT-401,RO Feed Hardness Meter,Analytical Indicator Transmitter,Measures hardness of RO feed water (reading: 0.00 ppm)
+AIT-402,RO Feed ORP Meter,Analytical Indicator Transmitter,Measures ORP of RO feed water (reading: 0.00 mV)
+UV-401,UV Dechlorinator,UV System,Removes chlorine from water
+T-402,NaHSO3 Tank,Tank,Sodium Bisulfite storage tank
+LS-401,NaHSO3 Level Switch,Level Switch,Monitors level in NaHSO3 Tank
+P-403,NaHSO3 Metering Pump 1,Pump,Doses sodium bisulfite
+P-404,NaHSO3 Metering Pump 2,Pump,Standby sodium bisulfite pump
