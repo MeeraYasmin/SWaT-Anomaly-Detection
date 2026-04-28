@@ -1,0 +1,19 @@
+Tag,Full_Name,Component_Type,Description
+AIT-201,Chem Dosing Conductivity Meter,Analytical Indicator Transmitter,Measures conductivity of water (reading: 34.45 µS/cm)
+P-201,NaCl Dosing Pump 1,Pump,Duty pump for NaCl dosing
+P-202,NaCl Dosing Pump 2,Pump,Standby pump for NaCl dosing
+T-201,NaCl Tank,Tank,Storage tank for NaCl solution
+LS-201,NaCl Level Switch,Level Switch,Monitors low/high level in NaCl tank
+P-203,HCl Dosing Pump 1,Pump,Standby pump for HCl dosing
+P-204,HCl Dosing Pump 2,Pump,Duty pump for HCl dosing
+T-202,HCl Tank,Tank,Storage tank for HCl solution
+LS-202,HCl Level Switch,Level Switch,Monitors low/high level in HCl tank
+P-205,NaOCl Dosing Pump 1 (FAC),Pump,Duty pump for NaOCl dosing (Free Available Chlorine)
+P-206,NaOCl Dosing Pump 2 (FAC),Pump,Standby pump for NaOCl dosing (FAC)
+P-207,NaOCl Dosing Pump 1 (UF),Pump,Duty pump for NaOCl dosing (Ultrafiltration)
+P-208,NaOCl Dosing Pump 2 (UF),Pump,Standby pump for NaOCl dosing (UF)
+T-203,NaOCl Tank,Tank,Storage tank for NaOCl solution
+LS-203,NaOCl Level Switch,Level Switch,Monitors low/high level in NaOCl tank
+AIT-202,Chem Dosing pH Meter,Analytical Indicator Transmitter,Measures pH level of water (reading: 6.98)
+AIT-203,Chem Dosing ORP Meter,Analytical Indicator Transmitter,Measures Oxidation-Reduction Potential (reading: 339.12 mV)
+MV-201,Chemical Dosing Valve,Motor-operated Valve,Controls flow of chemicals into main line
