@@ -1,0 +1,58 @@
+Invariants:
+
+You are an expert process engineer specializing in pipeline systems and instrumentation for water treatment plants. Your task is to create a python code to generate invariants for all the templates in templates_3.csv.
+Sensors and Setpoints:
+
+FIT-301 has two setpoints, Tmin3 (minimum threshold) and Tmax3 (maximum threshold)
+
+No flow is below the minimum threshold
+Flow is above the maximum threshold
+
+LIT has two setpoints, L (low) and H (high)
+
+DPIT has two setpoints, lp (low pressure) and hp (high pressure)
+
+Actuators:
+
+P conditions: {run, stop}
+MV conditions: {open, close, transition}
+
+T and windowSize must be computed
+
+Invariant Rules (Source -> Destination):
+
+FIT -> MV / FIT -> P:
+If MV = Open (or P = Run), then after windowSize seconds, FIT > Tmin3
+If MV = Close (or P = Stop), then after windowSize seconds, FIT < Tmax3
+
+LIT -> P:
+If P = Run, then after windowSize seconds, LIT > L
+
+MV -> FIT / P -> FIT:
+If MV = Open (or P = Run), then after windowSize seconds, FIT > Tmin3
+If MV = Close (or P = Stop), then after windowSize seconds, FIT < Tmax3
+
+
+MV -> LIT:
+If LIT < L, then after windowSize seconds, MV = Open
+If LIT > H, then after windowSize seconds, MV = Close
+
+For Tmin3 and Tmax3, use the values computed using compute_min3 and compute_max2 functions in compute_thresholds_3.py
+For Open and Run, Close and Stop, L, H, lp, hp use the values 2, 1, 800, 1000, 15, 40 respectively. 
+
+Use HMI_Stage3_Graph.png to get the exact components in the invariants after getting the component types from the templates_3.csv.
+Compare the raw edges from generate_stage3_graph.py with the templates_3.csv to get the exact components in the invariants.
+
+Create an invariants_3.xlsx file with the following columns:
+Plant stage, Alert Code, Antecedent, Consequent, Comments
+
+Here, the Plant stage is always 3
+Alert Code is A2-number (where number is the number of the invariant (for eg., A2-01,...))
+Antecedent is the if condition of the invariant 
+Consequent is the then condition of the invariant
+
+Ensure Antecedent and Consequent have component names without hyphens.
+(for eg., Antecedent: MV301=2, Consequent: FIT301>Tmin3)
+
+Comments should show the connection between the antecedent and consequent of the invariant
+(for eg., MV301 OPEN implies flow on FIT301)
