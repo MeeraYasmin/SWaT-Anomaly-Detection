@@ -1,0 +1,54 @@
+You are an expert process engineer specializing in pipeline systems
+ and instrumentation for water treatment plants. Your task is to analyze
+ the provided HMI diagram and produce a directed component flow graph based strictly on the rules below.
+
+Component Descriptions:
+
+MV (Motorized Valve): A motor-operated valve that controls whether water is allowed to pass through.
+ Water arriving at the valve continues forward to the next downstream component when the valve is open.
+P (Pump): A pump that draws water from the tank (represented by the LIT mounted on it) and pushes
+ it forward through the system toward the next downstream component.
+AIT (Analyser Indicator Transmitter): An inline water quality sensor that measures a specific chemical property of the water such as pH, ORP, or conductivity. It is a local indicator only and is not part of the process flow path — water does not flow through it.
+T (Tank): A storage vessel that holds water at a stage in the process and not part of the process flow path and so, it is not included as a separate node in the graph.
+LS (Level Switch): A binary level sensor physically mounted on a chemical dosing tank that monitors whether the liquid level inside has reached a pre-set high or low threshold. When the level drops to the low set-point, it triggers an alarm and stops the associated dosing pumps to protect them from running dry. It is a local protective device only and is not part of the process flow path — water does not flow through it.
+
+Step 1- Filter against the column names whitelist.
+Cross-check every identified component tag against the provided column_names.csv.
+ Remove any component that does not appear in the whitelist.
+ Components such as T-201, LS-201, T-202, LS-202, T-203 and LS-203 are examples of components that must be excluded
+ if they are absent from the whitelist. Do not include them in the graph under any circumstances,
+ even if they are clearly visible on the HMI diagram.
+
+Step 2- Construct the directed graph.
+Using only the whitelisted components remaining after Step 2, trace how water physically moves
+ through the system based on the HMI diagram and the component descriptions above.
+ Draw a connection from one component to the next based on the direction water flows between them.
+ Keep in mind that the tank (T) is excluded, the LIT mounted on that tank takes its place
+— so any component that was connected to the tank in the HMI is instead connected to the LIT node
+ in the graph.
+
+First, show the filtered list identified in Step 1.
+ Then, render the directed graph diagram using the filtered components from Step 1,
+  with each node labeled exactly as it appears in the column names list.
+
+Special Rules:
+ Keep in mind that the tank (T) and LS are excluded.
+
+P-207 and P-208 are used for UF process (which is connected to stage 3) and so even though it's present in the dataset, remove it from the directed graph and stage_2_components.csv.
+
+All the pumps are connected directly to the static mixer and then to MV-201 and even though the water passes through AITs (AIT-201, AIT-202, AIT-203 as they are mentioned on the dotted lines before the static mixer but since they are just chemical sensors and not part of the flow path, they need not be shown in the graph).
+
+Step 6: Show the "Static Mixer" as a terminal node for all the pumps P-201 to P-206, and as an input node for MV-201, even though it is not in the whitelist or dataset.
+
+First, show the filtered list identified in Step 1.
+ Then, render the directed graph diagram using the filtered components from Step 1,
+  with each node labeled exactly as it appears in the column names list.
+
+Step 3- Dataset filtering
+After the graph generation, extract the column names which are kept as node on the graph and from the preprocessed_dataset.csv, extract those column names alone (for eg, FIT-101, MV-101, …) and save this as stage_2_components.csv.
+
+Step 4- Pumps checking
+from the stage_2_components.csv, extract the pump columns and check the number of unique values in each pump column. If the number of unique values is less than 2, then remove the pump from the stage_2_components.csv and also from the graph.
+
+Step 5- Raw edges connections
+Save the raw edges from generate_stage2_graph.py as connections_2.csv as (source, destination) format.
