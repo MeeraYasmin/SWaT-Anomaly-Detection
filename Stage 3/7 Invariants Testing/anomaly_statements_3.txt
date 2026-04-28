@@ -1,0 +1,5 @@
+INV1: If P301=2, after a window of 102 samples, if LIT301<=800 then it is an anomaly.
+INV2: If P301=2, after a window of 6 samples, if FIT301<=0.215610 then it is an anomaly.
+INV3: If P301=1, after a window of 1 sample, if FIT301>=1.940492 then it is an anomaly.
+INV4: If MV302=2, after a window of 1 sample, if FIT301<=0.215610 then it is an anomaly.
+INV5: If MV302=1, after a window of 22 samples, if FIT301>=1.940492 then it is an anomaly.
