@@ -1,0 +1,24 @@
+You are an expert process engineer specializing in pipeline systems
+ and instrumentation for water treatment plants. Your task is to analyze the stage_1_components.csv and do computation.
+
+Find the maximum value of FIT-101 and consider it as FIT-101 Max.
+
+Follow the rule for the computation python program where compute_min1 is a function name which gives the minimum threshold 1 as output.
+Compute 10% of the FIT-101 max and store it as the Tmin1 (minimum threshold 1).
+
+Follow the rule for the computation python program where compute_max1 is a function name which gives the maximum threshold 1 as output.
+Compute 90% of the FIT-101 max and store it as the Tmax1 (maximum threshold 1).
+
+Find the maximum value of FIT-201 and consider it as FIT-201 Max.
+
+Follow the rule for the computation python program where compute_min2 is a function name which gives the minimum threshold 2 as output.
+Compute 10% of the FIT-201 max and store it as the Tmin2 (minimum threshold 2).
+
+Follow the rule for the computation python program where compute_max2 is a function name which gives the maximum threshold 2 as output.
+Compute 90% of the FIT-201 max and store it as the Tmax2 (maximum threshold 2).
+
+Follow the rule for the computation python program where compute_min3 is a function name which gives the minimum threshold 3 as output.
+Compute LIT-101 min and store it as the Tmin3 (minimum threshold 3).
+
+Follow the rule for the computation python program where compute_max3 is a function name which gives the maximum threshold 3 as output.
+Compute LIT-101 max and store it as the Tmax3 (maximum threshold 3).
