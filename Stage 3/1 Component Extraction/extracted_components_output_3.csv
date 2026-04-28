@@ -1,0 +1,23 @@
+Tag,Full_Name,Component_Type,Description
+LIT-301,UF Feed Water Level Meter,Level Indicator Transmitter,Monitors water level in UF Feed Water Tank T-301 (reading: 993 mm)
+T-301,UF Feed Water Tank,Tank,Storage for water to be filtered
+P-301,UF Feed Pump 1,Pump,Feeds water to the UF membrane
+P-302,UF Feed Pump 2,Pump,Standby/Secondary feed pump
+PI-301,UF Feed Pressure 1,Pressure Indicator,Measures pressure after P-301
+PI-302,UF Feed Pressure 2,Pressure Indicator,Measures pressure after P-302
+FIT-301,UF Feed Flow Meter,Flow Indicator Transmitter,Measures flow rate to the UF membrane (reading: 0.00 m³/h)
+FI-301,UF Feed Rotameter,Flow Indicator,Visual flow measurement
+PSH-301,UF Feed Pressure Switch High,Pressure Switch,Safety switch for high pressure
+PI-303,UF Filter Pressure,Pressure Indicator,Measures pressure at the filter inlet
+DPSH-301,UF Filter Diff Pressure Switch High,Differential Pressure Switch,Safety switch for high differential pressure
+DPIT-301,UF Filter Differential Pressure Meter,Differential Pressure Indicator Transmitter,Measures pressure drop across the filter (reading: 0.04 kPa)
+AIT-301,UF Permeate pH Meter,Analytical Indicator Transmitter,Measures pH of filtered water (reading: 6.46)
+AIT-302,UF Permeate ORP Meter,Analytical Indicator Transmitter,Measures ORP of filtered water (reading: 375.57 mV)
+AIT-303,UF Permeate Conductivity Meter,Analytical Indicator Transmitter,Measures conductivity of filtered water (reading: 12.26 µS/cm)
+MV-301,UF Backwash Valve,Motor-operated Valve,Controls backwash flow
+MV-302,RO Feed Water Valve,Motor-operated Valve,Controls flow to Stage 4 (RO Feed Water Tank)
+PI-304,UF Membrane Inlet Pressure,Pressure Indicator,Measures pressure before membrane
+UF-301,UF Membrane,Membrane,Ultrafiltration membrane unit
+PI-305,UF Membrane Outlet Pressure,Pressure Indicator,Measures pressure after membrane
+MV-304,UF Drain Valve,Motor-operated Valve,Controls drain flow from membrane
+MV-303,UF Backwash Drain Valve,Motor-operated Valve,Controls drain flow during backwash
