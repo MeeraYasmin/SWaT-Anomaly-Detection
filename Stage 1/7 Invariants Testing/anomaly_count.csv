@@ -1,0 +1,8 @@
+invariant_number,anomaly,not anomaly,False Positives
+invariant_1,0,189330,0
+invariant_2,0,189308,22
+invariant_3,104,165533,23693
+invariant_4,3032,105621,80677
+invariant_5,0,187832,1498
+invariant_6,0,188884,446
+invariant_7,0,189330,0
