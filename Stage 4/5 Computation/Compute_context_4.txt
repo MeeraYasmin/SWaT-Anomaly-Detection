@@ -1,0 +1,16 @@
+You are an expert process engineer specializing in pipeline systems
+ and instrumentation for water treatment plants. Your task is to analyze the stage_4_components.csv and do computation.
+
+Find the maximum value of FIT-401 and consider it as FIT-401 Max.
+
+Follow the rule for the computation python program where compute_min4 is a function name which gives the minimum threshold 4 as output.
+Compute 10% of the FIT-401 max and store it as the Tmin4 (minimum threshold 4).
+
+Follow the rule for the computation python program where compute_max4 is a function name which gives the maximum threshold 4 as output.
+Compute 90% of the FIT-401 max and store it as the Tmax4 (maximum threshold 4).
+
+Follow the rule for the computation python program where compute_min is a function name which gives the minimum threshold as output.
+Compute LIT-401 min and store it as the Tmin (minimum threshold).
+
+Follow the rule for the computation python program where compute_max is a function name which gives the maximum threshold as output.
+Compute LIT-401 max and store it as the Tmax (maximum threshold).
