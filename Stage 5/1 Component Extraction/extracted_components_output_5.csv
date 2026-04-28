@@ -1,0 +1,26 @@
+Tag,Full_Name,Component_Type,Description
+FIT-501,RO Membrane Inlet Flow Meter,Flow Indicator Transmitter,Measures water flow rate at the RO membrane inlet (reading: 1.22 m³/h)
+PSL-501,RO Feed Pressure Switch Low,Pressure Switch,Low-pressure safety switch for RO feed
+PIT-501,RO Membrane Inlet Pressure Meter,Pressure Indicator Transmitter,Measures pressure at the RO membrane inlet (reading: 220.42 kPa)
+P-501,RO High Pressure Pump 1,Pump,Primary high-pressure pump for RO process (reading: 10.00 Hz)
+P-502,RO High Pressure Pump 2,Pump,Secondary high-pressure pump for RO process (reading: 0.00 Hz)
+PSH-501,RO Feed Pressure Switch High,Pressure Switch,High-pressure safety switch for RO feed
+RO-501,RO Vessel 1,Reverse Osmosis Vessel,Reverse Osmosis membrane vessel 1
+RO-502,RO Vessel 2,Reverse Osmosis Vessel,Reverse Osmosis membrane vessel 2
+RO-503,RO Vessel 3,Reverse Osmosis Vessel,Reverse Osmosis membrane vessel 3
+PIT-502,RO Membrane Pressure Meter,Pressure Indicator Transmitter,Measures pressure at the RO membrane permeate (reading: 2.05 kPa)
+AIT-504,RO Permeate Conductivity Meter,Analytical Indicator Transmitter,Measures conductivity of RO permeate (reading: 1.77 µS/cm)
+FIT-502,RO Permeate Flow Meter,Flow Indicator Transmitter,Measures flow rate of RO permeate (reading: 1.04 m³/h)
+MV-501,RO Permeate Valve,Motorized Valve,Controls the flow of RO permeate
+MV-503,Permeate Reject Valve,Motorized Valve,Controls the rejection of RO permeate
+PI-501,RO Feed Pressure 1,Pressure Indicator,Measures feed pressure before filtration
+PI-502,RO Feed Pressure 2,Pressure Indicator,Measures feed pressure after filtration
+AIT-501,pH Meter,Analytical Indicator Transmitter,Measures pH level of RO feed water (reading: 6.58)
+AIT-502,RO Feed ORP Meter,Analytical Indicator Transmitter,Measures ORP of RO feed water (reading: 306.25 mV)
+AIT-503,RO Feed Conductivity Meter,Analytical Indicator Transmitter,Measures conductivity of RO feed water (reading: 60.18 µS/cm)
+FIT-504,RO Recirculation Flow Meter,Flow Indicator Transmitter,Measures flow rate in the recirculation loop (reading: 0.02 m³/h)
+FIT-503,RO Reject Flow Meter,Flow Indicator Transmitter,Measures flow rate of RO reject water (reading: 0.10 m³/h)
+PIT-503,RO Reject Pressure Meter,Pressure Indicator Transmitter,Measures pressure of RO reject water (reading: 200.65 kPa)
+MV-502,RO Backwash Valve,Motorized Valve,Controls the backwash of RO membranes
+MV-504,RO Reject Valve,Motorized Valve,Controls the flow of RO reject water
+FI-501,RO Reject Rotameter,Flow Indicator,Visual flow indicator for RO reject water

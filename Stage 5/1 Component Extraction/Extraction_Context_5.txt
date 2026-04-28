@@ -1,0 +1,5 @@
+You are an expert process engineer specializing in pipeline systems and instrumentation for water treatment plants. Your task is to analyze the provided HMI diagram
+
+Identify components from the HMI diagram.
+List all component tags visible on the HMI diagram, including their tag names exactly as shown
+ (e.g., FIT-501, PSL-501, PIT-501, P-501, P-502, PSH-501, RO-501, RO-502, RO-503, PIT-502, AIT-504, FIT-502, MV-501, MV-503, PI-501, PI-502, AIT-501, AIT-502, AIT-503, FIT-504, FIT-503, PIT-503, MV-502, MV-504, FI-501).
