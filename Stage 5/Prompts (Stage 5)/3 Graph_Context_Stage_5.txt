@@ -1,0 +1,59 @@
+You are an expert process engineer specializing in pipeline systems
+ and instrumentation for water treatment plants. Your task is to analyze
+ the provided HMI diagram and produce a directed component flow graph based strictly on the rules below.
+
+Component Descriptions:
+
+FIT (Flow Indicator Transmitter): An inline flow meter that measures the volume of water passing through
+ a pipe. Water flows into the FIT from the upstream component and continues forward to the next component
+ downstream.
+P (Pump): A pump that draws water from the tank (represented by the LIT mounted on it) and pushes
+ it forward through the system toward the next downstream component.
+PI (Pressure Indicator): A pressure gauge mounted on the pipeline that monitors pressure
+ at a specific point. It is a local indicator only and is not part of the process flow path — water does
+ not flow through it.
+AIT (Analyser Indicator Transmitter): An inline water quality sensor that measures a specific chemical property of the water such as pH, ORP, or conductivity. It is a local indicator only and is not part of the process flow path — water does not flow through it.
+MV (Motorized Valve): A motor-operated valve that controls whether water is allowed to pass through.
+ Water arriving at the valve continues forward to the next downstream component when the valve is open.
+FI (Flow Indicator / Rotameter): A local visual flow indicator that shows the flow rate on-site only. It has no electrical output and does not transmit data to the control system — it is a local indicator only and is not part of the process flow path. Water does not flow through it.
+PSH (Pressure Switch High): A binary pressure switch that triggers a high-pressure alarm and shuts down the UF feed pump when inlet pressure exceeds its set-point. It is a local protective device only and is not part of the process flow path — water does not flow through it.
+
+PSL (Pressure Switch Low): A binary pressure switch mounted on the high pressure pump suction header that triggers a low-pressure alarm and shuts down the RO feed pump when the incoming pressure drops below its set-point, protecting the pump from running dry. It is a local protective device only and is not part of the process flow path — water does not flow through it.
+PIT (Pressure Indicator Transmitter): A pressure transmitter that continuously monitors and transmits the pipeline pressure at a specific point to the PLC and HMI. In P5, PIT-501 monitors RO feed pressure, PIT-502 monitors RO permeate pressure, and PIT-503 monitors RO reject pressure — together used for Trans-Membrane Pressure (TMP) trending. It is a local indicator only and is not part of the process flow path — water does not flow through it.
+RO (Reverse Osmosis Membrane): A high-pressure membrane vessel that removes almost all impurities from the feed water, producing a permeate stream and a concentrate reject stream. Water flows into the RO membrane from the upstream component and continues forward to the next downstream component. Since RO is not included in the dataset, it is excluded from the flow graph.
+
+
+Step 1- Filter against the column names whitelist.
+Cross-check every identified component tag against the provided column_names.csv.
+ Remove any component that does not appear in the whitelist.
+ Components such as PSL-501, PSH-501, RO-501, RO-502, RO-503, PI-501, PI-502 and FI-501 are examples of components that must be excluded
+ if they are absent from the whitelist. Do not include them in the graph under any circumstances,
+ even if they are clearly visible on the HMI diagram.
+
+Step 2- Construct the directed graph.
+Using only the whitelisted components remaining after Step 2, trace how water physically moves
+ through the system based on the HMI diagram and the component descriptions above.
+ Draw a connection from one component to the next based on the direction water flows between them.
+
+Special Rules:
+
+AIT-501, AIT-502, AIT-503, AIT-504, PIT-501, PIT-502, PIT-503 are need not be shown on graph since they're just chemical sensor and pressure indicators and not part of the flow path.
+
+FIT-504 can be excluded since it's in recirculation system.
+
+From FIT-501, water flows through both P-501 and from P-501, it can flow through all the ROs (RO-501, RO-502, RO-503 even though it's not needed in the graph) and then goes to FIT-502 followed by MV-501 and, also goes to FIT-503 followed by MV-502.
+ 
+MV-503 and MV-504 are not needed since they're reject valves.
+
+First, show the filtered list identified in Step 1.
+ Then, render the directed graph diagram using the filtered components from Step 1,
+  with each node labeled exactly as it appears in the column names list.
+
+Step 3- Dataset filtering
+After the graph generation, extract the column names which are kept as node on the graph and from the preprocessed_dataset.csv, extract those column names alone (for eg, FIT-501, P-501, …) and save this as stage_5_components.csv.
+
+Step 4- Pumps checking
+from the stage_5_components.csv, extract the pump columns and check the number of unique values in each pump column. If the number of unique values is less than 2, then remove the pump from the stage_5_components.csv and also from the graph.
+
+Step 5- Raw edges connections
+Save the raw edges from generate_stage5_graph.py as connections_5.csv as (source, destination) format.

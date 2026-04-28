@@ -1,0 +1,53 @@
+Invariants:
+
+You are an expert process engineer specializing in pipeline systems and instrumentation for water treatment plants. Your task is to create a python code to generate invariants for all the templates in templates_5.csv.
+Sensors and Setpoints:
+
+FIT-501 has two setpoints, Tmin1 (minimum threshold) and Tmax1 (maximum threshold)
+FIT-502 has two setpoints, Tmin2 (minimum threshold) and Tmax2 (maximum threshold)
+FIT-503 has two setpoints, Tmin3 (minimum threshold) and Tmax3 (maximum threshold)
+
+No flow is below the minimum threshold
+Flow is above the maximum threshold
+
+Actuators:
+
+P conditions: {run, stop}
+MV conditions: {open, close, transition}
+
+T and windowSize must be computed
+
+Invariant Rules (Source -> Destination):
+
+FIT -> P:
+If P = Run, then after windowSize seconds, FIT > Tmin1
+If P = Stop, then after windowSize seconds, FIT < Tmax1
+
+FIT -> MV (depending on the edge connection)
+If MV = Open, then after windowSize seconds, FIT > Tmin2 or FIT > Tmin3
+If MV = Close, then after windowSize seconds, FIT < Tmax2 or FIT < Tmax3
+
+P -> FIT (depending on the edge connection)
+If P = Run, then after windowSize seconds, FIT > Tmin2 or FIT > Tmin3
+If P = Stop, then after windowSize seconds, FIT < Tmax2 or FIT < Tmax3
+
+
+For Tmin1, Tmin2, Tmin3, Tmax1, Tmax2 and Tmax3, use the values computed using compute_min1, compute_min2, compute_min3, compute_max1, compute_max2 and compute_max3 functions in compute_thresholds_5.py
+For Open and Run, Close and Stop, use the values 2, 1 respectively. 
+
+Use HMI_Stage5_Graph.png to get the exact components in the invariants after getting the component types from the templates_5.csv.
+Compare the raw edges from generate_stage5_graph.py with the templates_5.csv to get the exact components in the invariants.
+
+Create an invariants_5.xlsx file with the following columns:
+Plant stage, Alert Code, Antecedent, Consequent, Comments
+
+Here, the Plant stage is always 5
+Alert Code is A2-number (where number is the number of the invariant (for eg., A2-01,...))
+Antecedent is the if condition of the invariant 
+Consequent is the then condition of the invariant
+
+Ensure Antecedent and Consequent have component names without hyphens.
+(for eg., Antecedent: MV501=2, Consequent: FIT502>Tmin2)
+
+Comments should show the connection between the antecedent and consequent of the invariant
+(for eg., MV501 OPEN implies flow on FIT502)
