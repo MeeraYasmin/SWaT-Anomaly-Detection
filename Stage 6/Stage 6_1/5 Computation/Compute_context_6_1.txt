@@ -1,0 +1,16 @@
+You are an expert process engineer specializing in pipeline systems
+ and instrumentation for water treatment plants. Your task is to analyze the stage_6_components_1.csv and do computation.
+
+Find the maximum value of FIT-602 and consider it as FIT-602 Max.
+
+Follow the rule for the computation python program where compute_min2 is a function name which gives the minimum threshold 2 as output.
+Compute 10% of the FIT-602 max and store it as the Tmin2 (minimum threshold 2).
+
+Follow the rule for the computation python program where compute_max2 is a function name which gives the maximum threshold 2 as output.
+Compute 90% of the FIT-602 max and store it as the Tmax2 (maximum threshold 2).
+
+Follow the rule for the computation python program where compute_min is a function name which gives the minimum threshold as output.
+Compute LIT-601 min and store it as the Tmin (minimum threshold).
+
+Follow the rule for the computation python program where compute_max is a function name which gives the maximum threshold as output.
+Compute LIT-601 max and store it as the Tmax (maximum threshold).
