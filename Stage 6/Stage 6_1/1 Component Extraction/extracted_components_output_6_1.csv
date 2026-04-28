@@ -1,0 +1,7 @@
+Tag,Full_Name,Component_Type,Description
+LS-601,RO Permeate Level Switch,Level Switch,High/Low level safety switch for RO Permeate Tank
+T-601,RO Permeate Tank,Tank,Storage tank for Reverse Osmosis permeate water
+LIT-601,RO Permeate Level Meter,Level Indicator Transmitter,Measures water level in RO Permeate Tank (reading: 365 mm)
+P-601,RO Permeate Pump,Pump,Pump for RO permeate distribution
+PI-601,RO Permeate Pressure Indicator,Pressure Indicator,Measures pressure in the RO permeate line
+FIT-602,RO Permeate Flow Meter,Flow Indicator Transmitter,Measures flow rate of RO permeate (reading: 0.00 m³/h)
