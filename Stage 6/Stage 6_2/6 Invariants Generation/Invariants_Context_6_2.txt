@@ -1,0 +1,51 @@
+Invariants:
+
+You are an expert process engineer specializing in pipeline systems and instrumentation for water treatment plants. Your task is to create a python code to generate invariants for all the templates in templates_6_2.csv.
+Sensors and Setpoints:
+
+FIT-601 has two setpoints, Tmin1 (minimum threshold) and Tmax1 (maximum threshold)
+
+No flow is below the minimum threshold
+Flow is above the maximum threshold
+
+LIT-602 has two setpoints, L (low) and H (high)
+
+Actuators:
+
+P conditions: {run, stop}
+
+T and windowSize must be computed
+
+Invariant Rules (Source -> Destination):
+
+FIT -> P:
+If P = Run, then after windowSize seconds, FIT > Tmin1
+If P = Stop, then after windowSize seconds, FIT < Tmax1
+
+LIT -> P:
+If P = Run, then after windowSize seconds, LIT > L
+
+P -> FIT:
+If P = Run, then after windowSize seconds, FIT > Tmin1
+If P = Stop, then after windowSize seconds, FIT < Tmax1
+
+
+For Tmin1 and Tmax1, use the values computed using compute_min1 and compute_max1 functions in compute_thresholds_6_2.py
+For Run, Stop, L, H, use the values 2, 1, 200, 800 respectively. 
+
+Use HMI_Stage6_Graph_2.png to get the exact components in the invariants after getting the component types from the templates_6_2.csv.
+Compare the raw edges from generate_stage6_graph_2.py with the templates_6_2.csv to get the exact components in the invariants.
+
+Create an invariants_6_2.xlsx file with the following columns:
+Plant stage, Alert Code, Antecedent, Consequent, Comments
+
+Here, the Plant stage is always 6
+Alert Code is A2-number (where number is the number of the invariant (for eg., A2-01,...))
+Antecedent is the if condition of the invariant 
+Consequent is the then condition of the invariant
+
+Ensure Antecedent and Consequent have component names without hyphens.
+(for eg., Antecedent: P602=2, Consequent: FIT601>Tmin1)
+
+Comments should show the connection between the antecedent and consequent of the invariant
+(for eg., P602 RUN implies flow on FIT601)
