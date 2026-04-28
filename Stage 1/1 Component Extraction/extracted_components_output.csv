@@ -1,0 +1,10 @@
+Tag,Full_Name,Component_Type,Description
+FIT-101,Raw Water Inlet Flow Meter,Flow Indicator Transmitter,Measures incoming raw water flow (reading: 0.00 m³/h)
+MV-101,Raw Water Inlet Valve,Motor-operated Valve,Controls raw water inlet flow into T-101
+LIT-101,Raw Water Level Meter,Level Indicator Transmitter,Measures water level in T-101 (reading: 721 mm)
+T-101,Raw Water Tank,Tank,Main raw water storage tank
+P-101,Raw Water Pump 1,Pump,Primary duty pump for raw water transfer
+P-102,Raw Water Pump 2,Pump,Secondary/standby pump for raw water transfer
+PI-101,Raw Water Pressure 1,Pressure Indicator,Monitors pump outlet pressure on line 1
+PI-102,Raw Water Pressure 2,Pressure Indicator,Monitors pump outlet pressure on line 2
+FIT-201,Raw Water Outlet Flow Meter,Flow Indicator Transmitter,Measures outgoing raw water flow (reading: 2.62 m³/h)
