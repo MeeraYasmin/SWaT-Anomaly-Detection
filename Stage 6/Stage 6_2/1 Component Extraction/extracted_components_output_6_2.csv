@@ -1,0 +1,7 @@
+Tag,Full_Name,Component_Type,Description
+LS-602,UF Backwash Level Switch,Level Switch,High/Low level safety switch for UF Backwash Tank
+T-602,UF Backwash Tank,Tank,Storage tank for Ultrafiltration backwash water
+LIT-602,UF Backwash Level Meter,Level Indicator Transmitter,Measures water level in UF Backwash Tank (reading: 606 mm)
+P-602,UF Backwash Pump,Pump,Pump for UF backwash water
+PI-602,UF Backwash Pressure Indicator,Pressure Indicator,Measures pressure in the UF backwash line
+FIT-601,UF Backwash Flow Meter,Flow Indicator Transmitter,Measures flow rate of UF backwash water (reading: 0.00 m³/h)
