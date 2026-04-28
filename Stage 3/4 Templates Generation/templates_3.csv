@@ -1,0 +1,7 @@
+Source,Destination
+FIT,MV
+FIT,P
+LIT,P
+MV,FIT
+MV,LIT
+P,FIT
