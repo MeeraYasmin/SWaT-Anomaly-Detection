@@ -1,0 +1,7 @@
+Tag,Full_Name,Component_Type,Description
+LS-603,RO / UF CIP Level Switch,Level Switch,Level switch for the CIP (Clean-In-Place) Tank
+T-603,CIP Tank,Tank,Storage tank for CIP cleaning chemicals
+P-603,CIP Pump,Pump,Pump for CIP cleaning process
+PI-601,RO / UF CIP Pressure 1,Pressure Indicator,Pressure indicator 1 for the CIP distribution line
+PI-602,RO / UF CIP Pressure 2,Pressure Indicator,Pressure indicator 2 for the CIP distribution line
+FI-601,RO/UF CIP Rotameter,Flow Indicator,Visual flow rotameter for the CIP process
