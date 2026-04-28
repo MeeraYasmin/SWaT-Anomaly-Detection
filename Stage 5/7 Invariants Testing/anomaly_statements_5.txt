@@ -1,0 +1,10 @@
+INV1: If P501=2, after a window of 1 sample, if FIT501<=0.102397 then it is an anomaly.
+INV2: If P501=1, after a window of 104 samples, if FIT501>=0.921571 then it is an anomaly.
+INV3: If P501=2, after a window of 1 sample, if FIT502<=0.093852 then it is an anomaly.
+INV4: If P501=1, after a window of 4 samples, if FIT502>=0.844665 then it is an anomaly.
+INV5: If P501=2, after a window of 1 sample, if FIT503<=0.026425 then it is an anomaly.
+INV6: If P501=1, after a window of 102 samples, if FIT503>=0.237826 then it is an anomaly.
+INV7: If MV501=2, after a window of 1 sample, if FIT502<=0.093852 then it is an anomaly.
+INV8: If MV501=1, after a window of 4 samples, if FIT502>=0.844665 then it is an anomaly.
+INV9: If MV502=2, after a window of 1 sample, if FIT503<=0.026425 then it is an anomaly.
+INV10: If MV502=1, after a window of 125 samples, if FIT503>=0.237826 then it is an anomaly.

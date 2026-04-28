@@ -1,0 +1,11 @@
+Plant stage,Alert Code,Antecedent,Consequent,Comments
+5,A2-01,P501=2,FIT501<=0.102397,P501 RUN and no flow on FIT501 implies anomaly
+5,A2-02,P501=1,FIT501>=0.921571,P501 STOP and flow on FIT501 implies anomaly
+5,A2-03,P501=2,FIT502<=0.093852,P501 RUN and no flow on FIT502 implies anomaly
+5,A2-04,P501=1,FIT502>=0.844665,P501 STOP and flow on FIT502 implies anomaly
+5,A2-05,P501=2,FIT503<=0.026425,P501 RUN and no flow on FIT503 implies anomaly
+5,A2-06,P501=1,FIT503>=0.237826,P501 STOP and flow on FIT503 implies anomaly
+5,A2-07,MV501=2,FIT502<=0.093852,MV501 OPEN and no flow on FIT502 implies anomaly
+5,A2-08,MV501=1,FIT502>=0.844665,MV501 CLOSE and flow on FIT502 implies anomaly
+5,A2-09,MV502=2,FIT503<=0.026425,MV502 OPEN and no flow on FIT503 implies anomaly
+5,A2-10,MV502=1,FIT503>=0.237826,MV502 CLOSE and flow on FIT503 implies anomaly
