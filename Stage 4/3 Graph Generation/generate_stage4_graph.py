@@ -6,6 +6,17 @@ import networkx as nx
 import pandas as pd
 import csv
 import os
+import kaggle
+import requests
+
+
+def load_csv_from_github(url):
+    """Fetch CSV from GitHub raw link"""
+    response = requests.get(url)
+    if response.status_code != 200:
+        raise Exception("Failed to fetch CSV from GitHub")
+    return pd.read_csv(pd.io.common.StringIO(response.text))
+
 
 def generate_hmi_graph_and_dataset(image_path, whitelist_path, dataset_path, output_csv, graph_img_path, connections_csv_path):
     print(f"Loading whitelist from {whitelist_path}...")
