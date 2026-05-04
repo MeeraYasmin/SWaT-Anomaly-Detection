@@ -1,8 +1,0 @@
-Plant stage,Alert Code,Antecedent,Consequent,Comments
-1,A2-01,MV101=2,FIT101<=0.603465,MV101 OPEN and no flow on FIT101 implies anomaly
-1,A2-02,MV101=1,FIT101>=5.431188,MV101 CLOSE and flow on FIT101 implies anomaly
-1,A2-03,MV101=2,LIT101>=500,MV101 OPEN and no LIT101 < 500 implies anomaly
-1,A2-04,MV101=1,LIT101<=800,MV101 CLOSE and no LIT101 > 800 implies anomaly
-1,A2-05,P101=2,LIT101<=500,P101 RUN and no LIT101 > 500 implies anomaly
-1,A2-06,P101=2,FIT201<=0.317086,P101 RUN and no flow on FIT201 implies anomaly
-1,A2-07,P101=1,FIT201>=2.853773,P101 STOP and flow on FIT201 implies anomaly

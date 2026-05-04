@@ -1,7 +1,0 @@
-INV1: If MV101=2, after a window of 1 sample, if FIT101<=0.603465 then it is an anomaly.
-INV2: If MV101=1, after a window of 2 samples, if FIT101>=5.431188 then it is an anomaly.
-INV3: If MV101=2, after a window of 511 samples, if LIT101>=500 then it is an anomaly.
-INV4: If MV101=1, after a window of 3111 samples, if LIT101<=800 then it is an anomaly.
-INV5: If P101=2, after a window of 38 samples, if LIT101<=500 then it is an anomaly.
-INV6: If P101=2, after a window of 10 samples, if FIT201<=0.317086 then it is an anomaly.
-INV7: If P101=1, after a window of 1 sample, if FIT201>=2.853773 then it is an anomaly.
