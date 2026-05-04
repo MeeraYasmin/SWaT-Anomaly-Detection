@@ -6,6 +6,16 @@ import networkx as nx
 import pandas as pd
 import csv
 import os
+import kaggle
+import requests
+
+
+def load_csv_from_github(url):
+    """Fetch CSV from GitHub raw link"""
+    response = requests.get(url)
+    if response.status_code != 200:
+        raise Exception("Failed to fetch CSV from GitHub")
+    return pd.read_csv(pd.io.common.StringIO(response.text))
 
 def process_hmi_graph(hmi_num, hmi_name, raw_edges, pos, whitelist, df_full, output_dir):
     print(f"\n--- Processing {hmi_name} (HMI {hmi_num}) ---")
@@ -113,28 +123,35 @@ def process_hmi_graph(hmi_num, hmi_name, raw_edges, pos, whitelist, df_full, out
     print(f"Graph image saved to: {graph_img}")
 
 if __name__ == "__main__":
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    base_dir = os.path.dirname(script_dir) # Project_Steps (Stage 6_1)
-    
-    prep_dir = os.path.join(base_dir, "2_Dataset_Preprocessing")
-    graph_dir = script_dir
 
-    wl_path = os.path.join(prep_dir, "column_names.csv")
-    ds_path = os.path.join(prep_dir, "preprocessed_dataset.csv")
+    # Download Kaggle dataset
+    kaggle.api.dataset_download_files(
+        "meera0405/swat-dataset",
+        path="data/",
+        unzip=True
+    )
 
-    # Load whitelist
-    whitelist = set()
-    with open(wl_path, newline='') as f:
-        reader = csv.reader(f)
-        next(reader)
-        for row in reader:
-            if row: whitelist.add(row[0].strip())
+    base_dir = "data"
 
-    # Load full dataset once
-    print(f"Loading full dataset from {ds_path}...")
-    df_full = pd.read_csv(ds_path, low_memory=False)
+    # Local dataset (downloaded)
+    dataset_path = os.path.join(base_dir, "preprocessed_dataset.csv")
 
-    # HMI 1: RO Permeate Tank
-    hmi1_edges = [("LIT-601", "P-601"), ("P-601", "FIT-602")]
-    hmi1_pos   = {"LIT-601": (2, 0), "P-601": (5, 0), "FIT-602": (8, 0)}
-    process_hmi_graph(1, "RO Permeate Tank", hmi1_edges, hmi1_pos, whitelist, df_full, graph_dir)
+    # GitHub RAW whitelist
+    whitelist_path = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%201/2%20Dataset%20Preprocessing/column_names.csv"
+
+    # Image (optional, unused here)
+    image_path = None
+
+    # Local outputs
+    output_csv = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%206/Stage%206_1/3%20Graph%20Generation/stage_6_components_1.csv"
+    graph_img = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%206/Stage%206_1/3%20Graph%20Generation/HMI_Stage6_Graph_1.png"
+    connections_csv = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%206/Stage%206_1/3%20Graph%20Generation/connections_6_1.csv"
+
+    generate_hmi_graph_and_dataset(
+        image_path,
+        whitelist_path,
+        dataset_path,
+        output_csv,
+        graph_img,
+        connections_csv
+    )
