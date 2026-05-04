@@ -14,10 +14,9 @@ sys.path.insert(0, os.path.abspath(_COMPUTE_DIR))
 from compute_thresholds_6_1 import compute_min2, compute_max2  # noqa: E402
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
-_BASE = r"c:\Users\itrust\Downloads\Telegram Desktop\SWaT\Anomaly_Detection\Project_Steps (Stage 6)\Project_Steps (Stage 6_1)"
-COMPONENTS_CSV = os.path.join(_BASE, "3_Graph_Generation", "stage_6_components_1.csv")
-TEMPLATES_PATH = os.path.join(_BASE, "4_Templates_Generation", "templates_6_1.csv")
-CONNECTIONS_PATH = os.path.join(_BASE, "3_Graph_Generation", "connections_6_1.csv")
+CSV_PATH = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%206/Stage%206_1/3%20Graph%20Generation/stage_6_components_1.csv"
+TEMPLATES_PATH = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%206/Stage%206_1/4%20Templates%20Generation/templates_6_1.csv"
+CONNECTIONS_PATH = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%206/Stage%206_1/3%20Graph%20Generation/connections_6_1.csv"
 
 # ── Threshold Mapping ─────────────────────────────────────────────────────────
 _THRESHOLDS_CACHE = {}
