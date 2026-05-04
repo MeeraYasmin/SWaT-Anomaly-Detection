@@ -1,69 +1,74 @@
 import pandas as pd
 import re
 import os
+import kaggle
+
 
 def preprocess_swat_dataset(input_file, output_csv, column_names_csv):
     print(f"Loading {input_file}...")
-    # Load the Excel file
-    # Note: openpyxl or calamine might be needed for large xlsx files
+
+    # Load Excel
     df = pd.read_excel(input_file)
-    
+
     # 1. Remove columns which have _STATE
     print("Step 1: Removing _STATE columns...")
     df = df.drop(columns=[col for col in df.columns if '_STATE' in col])
-    
+
     # 2. Remove suffixes .Pv and .Status
-    print("Step 2: Removing .Pv and .Status suffixes...")
+    print("Step 2: Cleaning suffixes...")
     df.columns = [col.replace('.Pv', '').replace('.Status', '') for col in df.columns]
-    
-    # 3. Remove columns which have .Alarm
+
+    # 3. Remove .Alarm columns
     print("Step 3: Removing .Alarm columns...")
     df = df.drop(columns=[col for col in df.columns if '.Alarm' in col])
-    
-    # 4. Add hyphen between last letter and first number
-    print("Step 4: Formatting column names (e.g., FIT101 -> FIT-101)...")
+
+    # 4. Format column names
+    print("Step 4: Formatting column names...")
     def format_col_name(name):
-        # Find the transition from letter to digit
         match = re.search(r'([a-zA-Z])(\d)', name)
         if match:
-            # Insert hyphen between the letter and the digit
             return name[:match.start(1)+1] + '-' + name[match.start(2):]
         return name
 
     df.columns = [format_col_name(col) for col in df.columns]
-    
-    # 5. Data cleaning: Remove rows with "Bad Input"
-    print("Step 5: Cleaning data (removing 'Bad Input')...")
-    # We apply this to the whole dataframe. If any cell has "Bad Input", remove the row.
-    # Note: We do this BEFORE saving the final CSV to match requested flow but ensure clean data.
-    # The prompt says: save as preprocessed_dataset.csv, THEN do data cleaning on preprocessed_dataset.csv
-    
-    # Save intermediate if strictly following context, but usually better to clean before final save.
-    # I'll save it, then reload/clean as instructed.
+
+    # 5. Save intermediate
+    os.makedirs(os.path.dirname(output_csv), exist_ok=True)
     df.to_csv(output_csv, index=False)
     print(f"Intermediate saved to {output_csv}")
-    
-    # Reload to ensure we are cleaning exactly what was saved
+
+    # Reload and clean
     df = pd.read_csv(output_csv)
-    
-    # Remove rows containing "Bad Input"
+
+    print("Step 5: Removing 'Bad Input' rows...")
     initial_len = len(df)
     df = df[~df.apply(lambda row: row.astype(str).str.contains('Bad Input').any(), axis=1)]
-    print(f"Removed {initial_len - len(df)} rows with 'Bad Input'.")
-    
-    # Final save of preprocessed_dataset.csv
+    print(f"Removed {initial_len - len(df)} rows.")
+
+    # Final save
     df.to_csv(output_csv, index=False)
-    print(f"Final preprocessed dataset saved to {output_csv}")
-    
-    # 6. Extract column names
-    print(f"Step 6: Saving column names to {column_names_csv}...")
+    print(f"Final dataset saved to {output_csv}")
+
+    # 6. Save column names
+    print("Step 6: Saving column names...")
+    os.makedirs(os.path.dirname(column_names_csv), exist_ok=True)
     pd.DataFrame({'Column Names': df.columns}).to_csv(column_names_csv, index=False)
-    
+
     print("Preprocessing complete!")
 
+
 if __name__ == "__main__":
-    input_path = r"c:/Users/itrust/Downloads/Telegram Desktop/SWaT/data/Dataset/SWaT_Data_100Hrs.xlsx"
-    output_path = r"c:/Users/itrust/Downloads/Telegram Desktop/SWaT/data/Dataset/preprocessed_dataset.csv"
-    columns_path = r"c:/Users/itrust/Downloads/Telegram Desktop/SWaT/data/Dataset/column_names.csv"
+
+    #  Download dataset from Kaggle
+    kaggle.api.dataset_download_files(
+        "meera0405/swat-dataset",
+        path="data/",
+        unzip=True
+    )
+
+    #  Correct LOCAL paths
+    input_path = "data/SWaT_Data_100Hrs.xlsx"
+    output_path = "data/preprocessed_dataset.csv"
+    columns_path = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/blob/main/Stage%206/Stage%206_3/2%20Dataset%20Preprocessing/column_names.csv"
     
     preprocess_swat_dataset(input_path, output_path, columns_path)
