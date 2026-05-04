@@ -62,8 +62,8 @@ def preprocess_swat_dataset(input_file, output_csv, column_names_csv):
     print("Preprocessing complete!")
 
 if __name__ == "__main__":
-    input_path = r"c:/Users/itrust/Downloads/Telegram Desktop/SWaT/data/Dataset/SWaT_Data_100Hrs.xlsx"
-    output_path = r"c:/Users/itrust/Downloads/Telegram Desktop/SWaT/data/Dataset/preprocessed_dataset.csv"
-    columns_path = r"c:/Users/itrust/Downloads/Telegram Desktop/SWaT/data/Dataset/column_names.csv"
+    input_path = "https://www.kaggle.com/datasets/meera0405/swat-dataset?select=SWaT_Data_100Hrs.xlsx"
+    output_path = "https://www.kaggle.com/datasets/meera0405/swat-dataset?select=preprocessed_dataset.csv"
+    columns_path = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/blob/main/Stage%201/2%20Dataset%20Preprocessing/column_names.csv"
     
     preprocess_swat_dataset(input_path, output_path, columns_path)
