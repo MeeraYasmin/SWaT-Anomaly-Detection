@@ -191,16 +191,35 @@ def generate_hmi_graph_and_dataset(image_path, whitelist_path, dataset_path, out
     print(f"Graph image saved to: {graph_img_path}")
 
 if __name__ == "__main__":
-    base_dir = r"c:/Users/itrust/Downloads/Telegram Desktop/SWaT"
-    stage1_dir = os.path.join(base_dir, "Anomaly_Detection/Project_Steps (Stage 1)")
-    stage4_dir = os.path.join(base_dir, "Anomaly_Detection/Project_Steps (Stage 4)")
-    graph_dir  = os.path.join(stage4_dir, "3_Graph_Generation")
 
-    wl = os.path.join(stage4_dir, "2_Dataset_Preprocessing/column_names.csv")
-    ds = os.path.join(stage4_dir, "2_Dataset_Preprocessing/preprocessed_dataset.csv")
+    # Download Kaggle dataset
+    kaggle.api.dataset_download_files(
+        "meera0405/swat-dataset",
+        path="data/",
+        unzip=True
+    )
 
-    out_csv         = os.path.join(graph_dir, "stage_4_components.csv")
-    out_img         = os.path.join(graph_dir, "HMI_Stage4_Graph.png")
-    out_connections = os.path.join(graph_dir, "connections_4.csv")
+    base_dir = "data"
 
-    generate_hmi_graph_and_dataset(None, wl, ds, out_csv, out_img, out_connections)
+    # Local dataset (downloaded)
+    dataset_path = os.path.join(base_dir, "preprocessed_dataset.csv")
+
+    # GitHub RAW whitelist
+    whitelist_path = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%204/2%20Dataset%20Preprocessing/column_names.csv"
+
+    # Image (optional, unused here)
+    image_path = None
+
+    # Local outputs
+    output_csv = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%204/3%20Graph%20Generation/stage_4_components.csv"
+    graph_img = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%204/3%20Graph%20Generation/HMI_Stage4_Graph.png"
+    connections_csv = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%204/3%20Graph%20Generation/connections_4.csv"
+
+    generate_hmi_graph_and_dataset(
+        image_path,
+        whitelist_path,
+        dataset_path,
+        output_csv,
+        graph_img,
+        connections_csv
+    )
