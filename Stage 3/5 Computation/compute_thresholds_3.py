@@ -2,10 +2,7 @@ import pandas as pd
 import os
 
 # ── Load dataset ──────────────────────────────────────────────────────────────
-# Base directory for the project
-base_dir = r"c:\Users\itrust\Downloads\Telegram Desktop\SWaT"
-# Path to Stage 3 filtered components CSV
-CSV_PATH = os.path.join(base_dir, r"Anomaly_Detection\Project_Steps (Stage 3)\3_Graph_Generation\stage_3_components.csv")
+CSV_PATH = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%203/3%20Graph%20Generation/stage_3_components.csv"
 
 if not os.path.exists(CSV_PATH):
     print(f"Error: {CSV_PATH} not found.")
