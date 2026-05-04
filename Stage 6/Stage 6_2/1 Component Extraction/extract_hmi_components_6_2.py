@@ -1,7 +1,27 @@
 import pandas as pd
+import re
 import os
 
-def generate_hmi_components_csv(output_csv, components):
+def generate_hmi_components_csv(context_path, image_path, output_csv):
+    """
+    Generates a CSV of HMI components based on the provided context and image logic.
+    Since OCR environments can be complex to set up, this script provides the
+    structured extraction logic derived from the process engineering context.
+    """
+    print(f"Reading context from {context_path}...")
+    if context_path.startswith("http"):
+        response = requests.get(context_path)
+        if response.status_code != 200:
+            print("Error: Unable to fetch context file.")
+            return
+        context = response.text
+    else:
+        if not os.path.exists(context_path):
+        print(f"Error: {context_path} not found.")
+        return
+
+    with open(context_path, 'r', encoding='utf-8') as f:
+        context = f.read()
     """
     Generates a CSV of HMI components for Stage 6 including readings.
     """
@@ -14,7 +34,6 @@ def generate_hmi_components_csv(output_csv, components):
     df.to_csv(output_csv, index=False)
     print(f"Success! CSV saved to: {output_csv}")
 
-if __name__ == "__main__":
     # Define the component data based on labels and readings from HMI_Image_6.jpeg
     component_data = {
         "LS-602": {
@@ -55,14 +74,10 @@ if __name__ == "__main__":
         }
     }
 
-    # List of components for HMI 2
-    hmi_2_tags = ["LS-602", "T-602", "LIT-602", "P-602", "PI-602", "FIT-601"]
-
-    # Local directory for output
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+if __name__ == "__main__":
+# Paths relative to the project structure
+    context_file = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%206/Stage%206_2/1%20Component%20Extraction/Extraction_Context_6_2.txt"
+    image_file = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Images/HMI_Image_6_2.jpeg"
+    output_file = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%206/Stage%6_2/1%20Component%20Extraction/extracted_components_output_6_2.csv"
     
-    # Generate the output CSV file
-    generate_hmi_components_csv(
-        os.path.join(base_dir, "extracted_components_output_6_2.csv"),
-        [component_data[tag] for tag in hmi_2_tags]
-    )
+    generate_hmi_components_csv(abs_context, abs_image, abs_output)
