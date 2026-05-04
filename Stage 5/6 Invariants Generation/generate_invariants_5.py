@@ -20,10 +20,9 @@ except ImportError:
     print("Warning: Could not import compute_thresholds_5. Ensure the file exists.")
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
-_BASE = r"c:\Users\itrust\Downloads\Telegram Desktop\SWaT\Anomaly_Detection\Project_Steps (Stage 5)"
-CSV_PATH = os.path.join(_BASE, "3_Graph_Generation", "stage_5_components.csv")
-TEMPLATES_PATH = os.path.join(_BASE, "4_Templates_Generation", "templates_5.csv")
-CONNECTIONS_PATH = os.path.join(_BASE, "3_Graph_Generation", "connections_5.csv")
+CSV_PATH = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%205/3%20Graph%20Generation/stage_5_components.csv"
+TEMPLATES_PATH = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%205/4%20Templates%20Generation/templates_5.csv"
+CONNECTIONS_PATH = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%205/3%20Graph%20Generation/connections_5.csv"
 
 # ── Threshold Mapping ─────────────────────────────────────────────────────────
 _THRESHOLDS_CACHE = {}
