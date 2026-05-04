@@ -9,11 +9,18 @@ def generate_hmi_components_csv(context_path, image_path, output_csv):
     structured extraction logic derived from the process engineering context.
     """
     print(f"Reading context from {context_path}...")
-    if not os.path.exists(context_path):
+    if context_path.startswith("http"):
+        response = requests.get(context_path)
+        if response.status_code != 200:
+            print("Error: Unable to fetch context file.")
+            return
+        context = response.text
+    else:
+        if not os.path.exists(context_path):
         print(f"Error: {context_path} not found.")
         return
 
-    with open(context_path, 'r') as f:
+    with open(context_path, 'r', encoding='utf-8') as f:
         context = f.read()
 
     # Define the component data based on the HMI diagram analysis and context
@@ -86,14 +93,8 @@ def generate_hmi_components_csv(context_path, image_path, output_csv):
 
 if __name__ == "__main__":
     # Paths relative to the project structure
-    context_file = r"data/.agent/Component_extraction/Extraction_Context.txt"
-    image_file = r"data/HMI_Images/HMI_Image_1.jpeg"
-    output_file = r"data/.agent/Component_extraction/extracted_components_output.csv"
+    context_file = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%201/1%20Component%20Extraction/Extraction_Context.txt"
+    image_file = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Images/HMI_Image_1.jpeg"
+    output_file = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%201/1%20Component%20Extraction/extracted_components_output.csv"
     
-    # Make paths absolute for safety if running from different locations
-    base_dir = r"c:/Users/itrust/Downloads/Telegram Desktop/SWaT"
-    abs_context = os.path.join(base_dir, context_file)
-    abs_image = os.path.join(base_dir, image_file)
-    abs_output = os.path.join(base_dir, output_file)
-
     generate_hmi_components_csv(abs_context, abs_image, abs_output)
