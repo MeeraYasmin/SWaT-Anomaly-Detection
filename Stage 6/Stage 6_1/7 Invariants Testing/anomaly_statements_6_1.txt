@@ -1,3 +1,0 @@
-INV1: If P601=2, after a window of 1 sample, if FIT602<=0.294525 then it is an anomaly.
-INV2: If P601=1, after a window of 5 samples, if FIT602>=2.650722 then it is an anomaly.
-INV3: If P601=2, after a window of 244 samples, if LIT601<=100 then it is an anomaly.
