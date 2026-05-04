@@ -1,6 +1,0 @@
-Plant stage,Alert Code,Antecedent,Consequent,Comments
-3,A2-01,P301=2,LIT301<=800,P301 RUN and no LIT301 > 800 implies anomaly
-3,A2-02,P301=2,FIT301<=0.215610,P301 RUN and no flow on FIT301 implies anomaly
-3,A2-03,P301=1,FIT301>=1.940492,P301 STOP and flow on FIT301 implies anomaly
-3,A2-04,MV302=2,FIT301<=0.215610,MV302 OPEN and no flow on FIT301 implies anomaly
-3,A2-05,MV302=1,FIT301>=1.940492,MV302 CLOSE and flow on FIT301 implies anomaly
