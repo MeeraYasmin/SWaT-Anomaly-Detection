@@ -137,7 +137,7 @@ if __name__ == "__main__":
     dataset_path = os.path.join(base_dir, "preprocessed_dataset.csv")
 
     # GitHub RAW whitelist
-    whitelist_path = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%201/2%20Dataset%20Preprocessing/column_names.csv"
+    whitelist_path = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%206/Stage%206_2/2%20Dataset%20Preprocessing/column_names.csv"
 
     # Image (optional, unused here)
     image_path = None
