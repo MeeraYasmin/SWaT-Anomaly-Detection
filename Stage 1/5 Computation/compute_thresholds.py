@@ -1,8 +1,7 @@
 import pandas as pd
 
 # ── Load dataset ──────────────────────────────────────────────────────────────
-CSV_PATH = r"c:\Users\itrust\Downloads\Telegram Desktop\SWaT\Anomaly_Detection\Project_Steps (Stage 1)\3_Graph_Generation\stage_1_components.csv"
-
+CSV_PATH = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%201/3%20Graph%20Generation/stage_1_components.csv"
 df = pd.read_csv(CSV_PATH)
 
 # ── FIT-101 Thresholds ────────────────────────────────────────────────────────
