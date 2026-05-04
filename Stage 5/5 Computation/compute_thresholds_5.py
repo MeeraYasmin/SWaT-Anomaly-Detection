@@ -1,7 +1,7 @@
 import pandas as pd
 
 # ── Load dataset ──────────────────────────────────────────────────────────────
-CSV_PATH = r"c:\Users\itrust\Downloads\Telegram Desktop\SWaT\Anomaly_Detection\Project_Steps (Stage 5)\3_Graph_Generation\stage_5_components.csv"
+CSV_PATH = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%205/3%20Graph%20Generation/stage_5_components.csv"
 
 df = pd.read_csv(CSV_PATH)
 
