@@ -1,4 +1,0 @@
-Plant stage,Alert Code,Antecedent,Consequent,Comments
-6,A2-01,P602=2,LIT602<=200,P602 RUN and LIT602<=200 implies anomaly
-6,A2-02,P602=2,FIT601<=0.000192,P602 RUN and no flow on FIT601 implies anomaly
-6,A2-03,P602=1,FIT601>=0.001730,P602 STOP and flow on FIT601 implies anomaly
