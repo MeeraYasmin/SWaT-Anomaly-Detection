@@ -2,12 +2,7 @@ import pandas as pd
 import os
 
 # ── Load dataset ──────────────────────────────────────────────────────────────
-script_dir = os.path.dirname(os.path.abspath(__file__))
-CSV_PATH = os.path.join(os.path.dirname(script_dir), "3_Graph_Generation", "stage_6_components_1.csv")
-
-if not os.path.exists(CSV_PATH):
-    # Fallback to absolute path if joined path fails during remote execution
-    CSV_PATH = r"c:\Users\itrust\Downloads\Telegram Desktop\SWaT\Anomaly_Detection\Project_Steps (Stage 6)\Project_Steps (Stage 6_1)\3_Graph_Generation\stage_6_components_1.csv"
+CSV_PATH = "https://raw.githubusercontent.com/MeeraYasmin/SWaT-Anomaly-Detection/main/Stage%206/Stage%206_1/3%20Graph%20Generation/stage_6_components_1.csv"
 
 df = pd.read_csv(CSV_PATH)
 
